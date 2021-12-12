@@ -1,0 +1,191 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "sean",
+    "version": "1.0.0",
+    "title": "Find your desired hotel room",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Hotel Request",
+      "description": "Example API for requesting and return hotel requests"
+    }
+  ],
+  "paths": {
+    
+    "/hotel": {
+      "parameters": [
+        {
+          "name": "title",
+          "in": "query",
+          "required": false,
+          "description": "Title of the hotel that we want to match",
+          "type": "string"
+        },
+        {
+          "name": "bedroom",
+          "in": "query",
+          "required": false,
+          "description": "No of Bedroom of the hotel that we want to match",
+          "type": "string"
+        },
+        {
+          "name": "bathroom",
+          "in": "query",
+          "required": false,
+          "description": "No of bathroom of the hotel that we want to match",
+          "type": "string"
+        },
+        {
+          "name": "sleep",
+          "in": "query",
+          "required": false,
+          "description": "How many persons can sleep",
+          "type": "string"
+        },
+        {
+          "name": "price",
+          "in": "query",
+          "required": false,
+          "description": "Price (range: $50-$250) of the hotel that we want to match",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "in": "query",
+          "required": false,
+          "description": "Location of the hotel that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Hotel Request"
+        ],
+        "summary": "Get hotel request with given fields",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "description": "Hotel Request title",
+            "schema": {
+              "$ref": "#/components/schemas/title"
+            }
+          },
+          {
+            "in": "query",
+            "name": "bedroom",
+            "required": false,
+            "description": "Hotel Request bedroom",
+            "schema": {
+              "$ref": "#/components/schemas/bedroom"
+            }
+          },
+          {
+            "in": "query",
+            "name": "bathroom",
+            "required": false,
+            "description": "Hotel Request bathroom",
+            "schema": {
+              "$ref": "#/components/schemas/bathroom"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sleep",
+            "required": false,
+            "description": "Hotel Request sleep",
+            "schema": {
+              "$ref": "#/components/schemas/sleep"
+            }
+          },
+          {
+            "in": "query",
+            "name": "price",
+            "required": false,
+            "description": "Hotel Request price",
+            "schema": {
+              "$ref": "#/components/schemas/price"
+            }
+          },
+          {
+            "in": "query",
+            "name": "location",
+            "required": false,
+            "description": "Hotel Request location",
+            "schema": {
+              "$ref": "#/components/schemas/location"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Hotel request not found."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "title": {
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "bedroom": {
+        "properties": {
+          "bed": {
+            "type": "string"
+          }
+        }
+      },
+      "bathroom": {
+        "properties": {
+          "bath": {
+            "type": "string"
+          }
+        }
+      },
+      "sleep": {
+        "properties": {
+          "amount": {
+            "type": "string"
+          }
+        }
+      },
+      "price": {
+        "properties": {
+          "amount": {
+            "type": "string"
+          }
+        }
+      },
+      "location": {
+        "properties": {
+          "locationName": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
